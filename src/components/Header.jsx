@@ -14,6 +14,7 @@ const Header = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
+          marginLeft: "2rem",
         }}
       >
         <h1
@@ -21,7 +22,7 @@ const Header = () => {
             fontSize: "2.8rem",
             fontWeight: 600,
             letterSpacing: "-4px",
-            margin: "2rem 2rem 0 2rem",
+            margin: "1.5rem 0 0 0",
             lineHeight: 1,
           }}
         >
@@ -31,7 +32,7 @@ const Header = () => {
           style={{
             fontSize: "0.9rem",
             fontWeight: 400,
-            margin: "0.05rem 0 0 2rem",
+            margin: "0.05rem 0 2rem",
             letterSpacing: "0px",
           }}
         >

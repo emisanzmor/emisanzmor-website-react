@@ -12,7 +12,7 @@ function App() {
       style={{
         background: "#111",
         color: "#fff",
-        fontFamily: '"Inter", Arial, sans-serif',
+        fontFamily: '"Helvetica Neue", Arial, sans-serif',
         margin: 0,
         padding: 0,
         minHeight: "100vh",
