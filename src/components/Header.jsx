@@ -19,25 +19,15 @@ const Header = () => {
       >
         <h1
           style={{
-            fontSize: "2.8rem",
+            fontSize: "3rem",
             fontWeight: 600,
             letterSpacing: "-4px",
-            margin: "1.5rem 0 0 0",
+            margin: "1rem 0 0 0",
             lineHeight: 1,
           }}
         >
           emisanzmor.
         </h1>
-        <span
-          style={{
-            fontSize: "0.9rem",
-            fontWeight: 400,
-            margin: "0.05rem 0 2rem",
-            letterSpacing: "0px",
-          }}
-        >
-          portfolio
-        </span>
       </div>
       <nav
         style={{
@@ -52,8 +42,8 @@ const Header = () => {
           style={{
             listStyle: "none",
             display: "flex",
-            gap: "4rem",
-            margin: "1.5rem 5.5rem 0 0",
+            gap: "6rem",
+            margin: "1rem 3rem 0 0",
           }}
         >
           <li>
@@ -62,13 +52,13 @@ const Header = () => {
               style={{
                 color: "#fff",
                 textDecoration: "none",
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
               }}
             >
-              About
+              about
             </a>
           </li>
 
@@ -78,13 +68,13 @@ const Header = () => {
               style={{
                 color: "#fff",
                 textDecoration: "none",
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
               }}
             >
-              Projects
+              projects
             </a>
           </li>
 
@@ -94,13 +84,13 @@ const Header = () => {
               style={{
                 color: "#fff",
                 textDecoration: "none",
-                fontSize: "0.9rem",
+                fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
               }}
             >
-              Contact
+              contact
             </a>
           </li>
         </ul>

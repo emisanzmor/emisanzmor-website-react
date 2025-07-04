@@ -10,20 +10,27 @@ import LoadingScreen from "./components/LoadingScreen";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // React Hook that runs once on mount
-  // Waits 3 seconds, then sets isLoading to false to hide the loading screen
+  // Deactivate overflow during Loading Screen
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = "hidden";
+
+      return () => (document.body.style.overflow = "auto");
+    }
+  }, [isLoading]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000); // Show loading screen for 2 seconds
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div
+      className="bg-black"
       style={{
-        background: "#111",
         color: "#fff",
         fontFamily: '"Helvetica Neue", Arial, sans-serif',
         margin: 0,
