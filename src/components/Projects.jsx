@@ -22,7 +22,6 @@ const Projects = () => {
         flexDirection: "column",
         justifyContent: "flex-start",
         padding: "2rem 2rem",
-        borderTop: "1px solid #999",
         margintop: "2rem",
       }}
     >

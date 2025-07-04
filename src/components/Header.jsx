@@ -48,7 +48,7 @@ const Header = () => {
         >
           <li>
             <a
-              href="#about"
+              href="/"
               style={{
                 color: "#fff",
                 textDecoration: "none",
@@ -64,7 +64,7 @@ const Header = () => {
 
           <li>
             <a
-              href="#projects"
+              href="/projects"
               style={{
                 color: "#fff",
                 textDecoration: "none",

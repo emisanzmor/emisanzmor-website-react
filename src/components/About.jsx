@@ -10,8 +10,8 @@ const About = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        padding: "2rem 2rem",
-        borderTop: "1px solid #999",
+        padding: "7rem 2rem",
+
         marginTop: "2rem",
       }}
     >
@@ -22,14 +22,14 @@ const About = () => {
       >
         <h2
           style={{
-            fontSize: "6rem",
-            fontWeight: 800,
-            letterSpacing: "-6px",
+            fontSize: "5rem",
+            fontWeight: 600,
+            letterSpacing: "-4px",
             color: "#e5e5e5",
             marginBottom: "-1rem",
           }}
         >
-          emisanzmor
+          Emiliano Sánchez
         </h2>
         <p
           style={{

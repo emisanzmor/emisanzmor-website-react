@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <section
       style={{
-        maxHeight: "100vh",
+        height: "1000vh",
         display: "flex",
         flexDirection: "column",
         color: "#f5f5f5",
