@@ -29,7 +29,7 @@ const About = () => {
             marginBottom: "-1rem",
           }}
         >
-          Emiliano Sánchez
+          Emiliano Sanzmor
         </h2>
         <p
           style={{

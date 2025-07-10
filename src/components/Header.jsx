@@ -1,6 +1,12 @@
 import React from "react";
+import useDelayedNavigate from "./useDelayedNavigate"; // Ajusta la ruta si está en otra carpeta
+import { useState } from "react";
 
-const Header = () => {
+const Header = ({ setIsLoading }) => {
+  const delayedNavigate = useDelayedNavigate(() => {
+    setIsLoading(true);
+  }, 1000);
+
   return (
     <header
       style={{
@@ -47,35 +53,41 @@ const Header = () => {
           }}
         >
           <li>
-            <a
-              href="/"
+            <button
+              onClick={() => delayedNavigate("/")}
               style={{
+                background: "none",
+                border: "none",
                 color: "#fff",
                 textDecoration: "none",
                 fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
+                cursor: "pointer",
               }}
             >
               about
-            </a>
+            </button>
           </li>
 
           <li>
-            <a
-              href="/projects"
+            <button
+              onClick={() => delayedNavigate("/projects")}
               style={{
+                background: "none",
+                border: "none",
                 color: "#fff",
                 textDecoration: "none",
                 fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
+                cursor: "pointer",
               }}
             >
               projects
-            </a>
+            </button>
           </li>
 
           <li>
