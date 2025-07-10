@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Hero from "./components/Hero";
-import Projects from "./components/Projects";
-
 import Header from "./components/Header";
 import About from "./components/About";
 import Footer from "./components/Footer";
@@ -12,6 +9,7 @@ import ProjectsPage from "./pages/ProjectsPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
 
   // Deactivate overflow during Loading Screen
   useEffect(() => {
@@ -42,8 +40,13 @@ function App() {
       }}
     >
       <Router>
-        <LoadingScreen isVisible={isLoading} />
-        <Header /> {/* Header section */}
+        <LoadingScreen
+          isVisible={isLoading}
+          isExiting={isExiting}
+          setIsExiting={setIsExiting}
+          setIsLoading={setIsLoading}
+        />
+        <Header setIsLoading={setIsLoading} /> {/* Header section */}
         <main>
           <Routes>
             <Route path="/" element={<About />} />

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>Fracciones Paso a Paso</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .slide {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        margin: 30px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        min-height: 80vh;
+        display: none;
+        position: relative;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      h1 {
+        color: #4a5568;
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 30px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      h2 {
+        color: #2d3748;
+        font-size: 2em;
+        margin-bottom: 20px;
+        border-bottom: 3px solid #667eea;
+        padding-bottom: 10px;
+      }
+
+      h3 {
+        color: #4a5568;
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        background: #f7fafc;
+        padding: 15px;
+        border-left: 5px solid #667eea;
+      }
+
+      .emoji-title {
+        font-size: 1.8em;
+        color: #2d3748;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .definition-box {
+        background: #e6fffa;
+        border: 2px solid #38b2ac;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        font-size: 1.1em;
+      }
+
+      .example-box {
+        background: #fff5f5;
+        border: 2px solid #fc8181;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        font-size: 1.1em;
+      }
+
+      .step-box {
+        background: #f0fff4;
+        border: 2px solid #68d391;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+        font-size: 1.1em;
+      }
+
+      .verification-box {
+        background: #fef5e7;
+        border: 2px solid #f6ad55;
+        border-radius: 10px;
+        padding: 15px;
+        margin: 15px 0;
+        font-size: 1em;
+      }
+
+      .fraction {
+        font-size: 1.3em;
+        font-weight: bold;
+        color: #2d3748;
+        display: inline-block;
+        margin: 0 5px;
+      }
+
+      .table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 1.1em;
+      }
+
+      th,
+      td {
+        border: 2px solid #e2e8f0;
+        padding: 15px;
+        text-align: center;
+      }
+
+      th {
+        background: #667eea;
+        color: white;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background: #f8fafc;
+      }
+
+      .navigation {
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        z-index: 1000;
+      }
+
+      .nav-btn {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 1.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .nav-btn:hover {
+        background: #5a67d8;
+        transform: translateY(-2px);
+      }
+
+      .nav-btn:disabled {
+        background: #cbd5e0;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .slide-counter {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: #667eea;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: bold;
+      }
+
+      .list-item {
+        margin: 15px 0;
+        padding: 15px;
+        background: #f8fafc;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+      }
+
+      .highlight {
+        background: #fef5e7;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      .math-steps {
+        background: #f0f4f8;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        font-family: "Courier New", monospace;
+        font-size: 1.1em;
+      }
+
+      .result-box {
+        background: #e6fffa;
+        border: 3px solid #38b2ac;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 25px 0;
+        text-align: center;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: #667eea;
+        transition: width 0.3s ease;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="container">
+      <!-- Slide 1: Portada -->
+      <div class="slide active">
+        <div class="slide-counter">1/22</div>
+        <h1>📚 FRACCIONES EXPLICADAS PASO A PASO</h1>
+        <div style="text-align: center; font-size: 1.5em; margin: 50px 0">
+          <p><strong>Para estudiantes de primero de secundaria</strong></p>
+          <p style="margin-top: 20px">Sin asumir conocimientos previos</p>
+        </div>
+        <div style="text-align: center; margin-top: 80px">
+          <div style="font-size: 3em; margin: 30px 0">🎯📊🔢</div>
+          <p style="font-size: 1.2em; color: #666">
+            Aprenderemos desde lo más básico hasta resolver problemas complejos
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 2: Diccionario -->
+      <div class="slide">
+        <div class="slide-counter">2/22</div>
+        <h2>📖 DICCIONARIO DE FRACCIONES</h2>
+        <p style="text-align: center; font-size: 1.2em; margin-bottom: 30px">
+          (Palabras importantes que necesitas saber)
+        </p>
+
+        <div class="definition-box">
+          <h3>🔢 Fracción</h3>
+          <p>
+            Un número que representa una parte de algo completo (como una
+            rebanada de pastel)
+          </p>
+        </div>
+
+        <div class="definition-box">
+          <h3>⬆️ Numerador</h3>
+          <p>El número de arriba (las partes que tomo)</p>
+        </div>
+
+        <div class="definition-box">
+          <h3>⬇️ Denominador</h3>
+          <p>El número de abajo (las partes totales en que se divide)</p>
+        </div>
+
+        <div class="definition-box">
+          <h3>🎯 Decimal</h3>
+          <p>
+            Otra forma de escribir fracciones usando punto (como 0.5 en lugar de
+            1/2)
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 3: Para qué sirve -->
+      <div class="slide">
+        <div class="slide-counter">3/22</div>
+        <h2>🎪 ¿PARA QUÉ SIRVE ESTO EN LA VIDA REAL?</h2>
+
+        <div class="list-item">
+          <h3>🌮 Al repartir tortillas</h3>
+          <p>En partes iguales entre la familia</p>
+        </div>
+
+        <div class="list-item">
+          <h3>🌾 Al medir terrenos</h3>
+          <p>Para sembrar diferentes cultivos</p>
+        </div>
+
+        <div class="list-item">
+          <h3>💰 Al dividir dinero</h3>
+          <p>De una venta o trabajo</p>
+        </div>
+
+        <div class="list-item">
+          <h3>🍲 Al calcular ingredientes</h3>
+          <p>Para hacer más comida</p>
+        </div>
+
+        <div class="list-item">
+          <h3>🍬 Al repartir dulces</h3>
+          <p>Entre amigos de manera justa</p>
+        </div>
+      </div>
+
+      <!-- Slide 4: Ejercicio 2a - Introducción -->
+      <div class="slide">
+        <div class="slide-counter">4/22</div>
+        <h2>📘 EJERCICIO 2 - PARTE A</h2>
+        <div class="emoji-title">🧵 ¿Quién usó más tela, Susana o Sofía?</div>
+
+        <div class="example-box">
+          <h3>Lo que dice el problema:</h3>
+          <p>
+            <strong>Susana</strong> usó <span class="fraction">3/5</span> de su
+            tela
+          </p>
+          <p>
+            <strong>Sofía</strong> usó <span class="fraction">7/12</span> de su
+            tela
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px">
+          <h3>🤔 ¿Podemos comparar directamente?</h3>
+          <p style="font-size: 1.2em; color: #666">
+            Vamos a ver paso a paso...
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 5: Qué es una fracción -->
+      <div class="slide">
+        <div class="slide-counter">5/22</div>
+        <h2>PASO 1: ¿Qué es una fracción?</h2>
+
+        <div class="definition-box">
+          <p>
+            Una fracción es un número que
+            <strong>representa una parte de algo</strong>.
+          </p>
+        </div>
+
+        <div class="example-box">
+          <h3>🌮 Ejemplo con tortillas:</h3>
+          <p>
+            Si tengo 5 tortillas y me como 3, eso es
+            <span class="fraction">3/5</span> de mis tortillas.
+          </p>
+          <br />
+          <p>
+            • El número de arriba (3) = <strong>numerador</strong> = cuántas
+            tortillas me comí
+          </p>
+          <p>
+            • El número de abajo (5) = <strong>denominador</strong> = cuántas
+            tortillas tenía en total
+          </p>
+        </div>
+
+        <div style="text-align: center; font-size: 2em; margin: 30px 0">
+          <div
+            style="
+              border: 3px solid #667eea;
+              padding: 20px;
+              border-radius: 10px;
+              display: inline-block;
+            "
+          >
+            <span style="font-size: 1.5em; color: #e53e3e">3</span><br />
+            <hr style="border: 2px solid #333; margin: 10px 0" />
+            <span style="font-size: 1.5em; color: #38a169">5</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Por qué no podemos comparar directo -->
+      <div class="slide">
+        <div class="slide-counter">6/22</div>
+        <h2>PASO 2: ¿Por qué no podemos comparar 3/5 y 7/12 directamente?</h2>
+
+        <div class="example-box">
+          <h3>Porque tienen <strong>diferentes denominadores</strong>:</h3>
+          <p>
+            • <span class="fraction">3/5</span>: el total está dividido en
+            <strong>5 partes</strong>
+          </p>
+          <p>
+            • <span class="fraction">7/12</span>: el total está dividido en
+            <strong>12 partes</strong>
+          </p>
+        </div>
+
+        <div class="example-box">
+          <h3>🎂 Ejemplo con pasteles:</h3>
+          <p>Es como comparar:</p>
+          <p>
+            • <strong>3 rebanadas</strong> de un pastel cortado en
+            <strong>5 partes</strong>
+          </p>
+          <p>
+            • <strong>7 rebanadas</strong> de un pastel cortado en
+            <strong>12 partes</strong>
+          </p>
+          <br />
+          <p style="color: #e53e3e; font-weight: bold">
+            ¡Las rebanadas son de diferente tamaño!
+          </p>
+        </div>
+
+        <div class="result-box">
+          <p>
+            Para comparar, necesitamos que ambos pasteles estén
+            <strong>divididos en el mismo número de partes</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 7: Encontrar número común -->
+      <div class="slide">
+        <div class="slide-counter">7/22</div>
+        <h2>PASO 3: Encontrar un número que sirva para ambos denominadores</h2>
+
+        <div class="step-box">
+          <h3>🤔 ¿Cómo encontramos ese número especial?</h3>
+          <p>
+            Imagina que tienes que partir
+            <strong>DOS pasteles del mismo tamaño</strong>:
+          </p>
+          <p>• El primer pastel lo partes en <strong>5 pedazos</strong></p>
+          <p>• El segundo pastel lo partes en <strong>12 pedazos</strong></p>
+        </div>
+
+        <div class="step-box">
+          <h3>
+            🔍 Necesitamos encontrar una forma de partir AMBOS pasteles en el
+            MISMO número de pedazos
+          </h3>
+        </div>
+
+        <div class="math-steps">
+          <p>Vamos a buscar un número que sirva para los dos:</p>
+          <p>• ¿5 × ? = un número que también sea múltiplo de 12?</p>
+          <p>• Probemos: 5 × 12 = 60 ✓</p>
+          <p>• ¿12 × ? = 60? → 12 × 5 = 60 ✓</p>
+        </div>
+
+        <div class="result-box">
+          <p>¡Perfecto! <strong>60</strong> sirve para los dos.</p>
+        </div>
+      </div>
+
+      <!-- Slide 8: Convertir fracciones -->
+      <div class="slide">
+        <div class="slide-counter">8/22</div>
+        <h2>PASO 4: Convertir ambas fracciones para que tengan 60 abajo</h2>
+
+        <div class="step-box">
+          <h3>Para 3/5:</h3>
+          <p>• Si el denominador va a ser 60, ¿por qué número multiplicamos?</p>
+          <p>• 5 × 12 = 60</p>
+          <p>
+            • <strong>Regla importante:</strong> Lo que hago abajo, también lo
+            hago arriba
+          </p>
+          <div class="math-steps">3/5 = (3 × 12)/(5 × 12) = 36/60</div>
+        </div>
+
+        <div class="verification-box">
+          <h3>¿Cómo verifico que está correcto?</h3>
+          <p>36 ÷ 60 = 0.6 y 3 ÷ 5 = 0.6 ✓ ¡Correcto!</p>
+        </div>
+
+        <div class="step-box">
+          <h3>Para 7/12:</h3>
+          <p>• 12 × 5 = 60</p>
+          <div class="math-steps">7/12 = (7 × 5)/(12 × 5) = 35/60</div>
+        </div>
+
+        <div class="verification-box">
+          <h3>¿Cómo verifico que está correcto?</h3>
+          <p>35 ÷ 60 = 0.583... y 7 ÷ 12 = 0.583... ✓ ¡Correcto!</p>
+        </div>
+      </div>
+
+      <!-- Slide 9: Comparar resultado -->
+      <div class="slide">
+        <div class="slide-counter">9/22</div>
+        <h2>PASO 5: Ahora sí comparamos</h2>
+
+        <div class="result-box">
+          <h3>Tenemos:</h3>
+          <p>• Susana → <span class="fraction">36/60</span></p>
+          <p>• Sofía → <span class="fraction">35/60</span></p>
+        </div>
+
+        <div style="text-align: center; font-size: 2em; margin: 50px 0">
+          <p><strong>36</strong> es más que <strong>35</strong></p>
+        </div>
+
+        <div
+          class="result-box"
+          style="background: #f0fff4; border-color: #68d391"
+        >
+          <h3>👉 RESPUESTA:</h3>
+          <p><strong>Susana usó más tela</strong></p>
+        </div>
+      </div>
+
+      <!-- Slide 10: Ejercicio 2b - Introducción -->
+      <div class="slide">
+        <div class="slide-counter">10/22</div>
+        <h2>📘 EJERCICIO 2 - PARTE B</h2>
+        <div class="emoji-title">🚶 ¿Quién camina menos: Juan o Jorge?</div>
+
+        <div class="example-box">
+          <h3>Lo que dice el problema:</h3>
+          <p>
+            <strong>Juan</strong> camina <span class="fraction">36/48</span> km
+          </p>
+          <p>
+            <strong>Jorge</strong> camina <span class="fraction">45/20</span> km
+          </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px">
+          <h3>🤔 Estos números se ven complicados...</h3>
+          <p style="font-size: 1.2em; color: #666">¡Vamos a simplificarlos!</p>
+        </div>
+      </div>
+
+      <!-- Slide 11: Simplificar fracciones -->
+      <div class="slide">
+        <div class="slide-counter">11/22</div>
+        <h2>PASO 1: Simplificar las fracciones</h2>
+
+        <div class="definition-box">
+          <h3>¿Qué significa simplificar?</h3>
+          <p>
+            Es como cambiar "12 manzanas de 24 total" por "1 manzana de 2
+            total". Es lo mismo, pero más fácil de entender.
+          </p>
+        </div>
+
+        <div class="step-box">
+          <h3>Para 36/48:</h3>
+          <p>• ¿Hay un número que divida tanto a 36 como a 48?</p>
+          <p>• Probemos con 12: 36 ÷ 12 = 3 y 48 ÷ 12 = 4</p>
+          <p>• Entonces: <span class="fraction">36/48 = 3/4</span></p>
+        </div>
+
+        <div class="verification-box">
+          <h3>¿Cómo verifico que está correcto?</h3>
+          <p>3 ÷ 4 = 0.75 y 36 ÷ 48 = 0.75 ✓ ¡Correcto!</p>
+        </div>
+
+        <div class="step-box">
+          <h3>Para 45/20:</h3>
+          <p>• ¿Hay un número que divida tanto a 45 como a 20?</p>
+          <p>• Probemos con 5: 45 ÷ 5 = 9 y 20 ÷ 5 = 4</p>
+          <p>• Entonces: <span class="fraction">45/20 = 9/4</span></p>
+        </div>
+
+        <div class="verification-box">
+          <h3>¿Cómo verifico que está correcto?</h3>
+          <p>9 ÷ 4 = 2.25 y 45 ÷ 20 = 2.25 ✓ ¡Correcto!</p>
+        </div>
+      </div>
+
+      <!-- Slide 12: Comparar fracciones simplificadas -->
+      <div class="slide">
+        <div class="slide-counter">12/22</div>
+        <h2>PASO 2: Comparar las fracciones simplificadas</h2>
+
+        <div class="result-box">
+          <h3>Ahora tenemos:</h3>
+          <p>• Juan → <span class="fraction">3/4</span></p>
+          <p>• Jorge → <span class="fraction">9/4</span></p>
+        </div>
+
+        <div class="step-box">
+          <h3>¡Ambos tienen el mismo número abajo (4)!</h3>
+          <p>Ahora sí podemos comparar directamente los números de arriba.</p>
+        </div>
+
+        <div class="example-box">
+          <h3>Entender qué significan estos números:</h3>
+          <p>
+            • Juan camina <strong>3 partes de 4</strong> = menos de 1 km
+            completo
+          </p>
+          <p>
+            • Jorge camina <strong>9 partes de 4</strong> = más de 2 km
+            completos (porque 9 ÷ 4 = 2.25)
+          </p>
+        </div>
+
+        <div
+          class="result-box"
+          style="background: #f0fff4; border-color: #68d391"
+        >
+          <h3>👉 RESPUESTA:</h3>
+          <p><strong>Juan camina menos que Jorge</strong></p>
+        </div>
+      </div>
+
+      <!-- Slide 13: Regla para comparar -->
+      <div class="slide">
+        <div class="slide-counter">13/22</div>
+        <h2>PARTE C: ¿Qué regla usamos para comparar fracciones?</h2>
+
+        <div class="definition-box">
+          <h3>📏 REGLA CLARA:</h3>
+          <h4>
+            Si dos fracciones tienen diferente número abajo (denominador):
+          </h4>
+          <p>1. Primero las cambiamos para que tengan el mismo número abajo</p>
+          <p>2. Después comparamos los números de arriba (numeradores)</p>
+        </div>
+
+        <div class="definition-box">
+          <h4>Si dos fracciones tienen el mismo número abajo:</h4>
+          <p>• Simplemente compara los números de arriba</p>
+          <p>• El que tenga mayor número arriba es la fracción más grande</p>
+        </div>
+
+        <div class="example-box">
+          <h3>Ejemplos:</h3>
+          <p>
+            • <span class="fraction">3/4</span> vs
+            <span class="fraction">5/4</span> → 5 > 3, entonces
+            <span class="fraction">5/4</span> es mayor
+          </p>
+          <p>
+            • <span class="fraction">2/7</span> vs
+            <span class="fraction">3/5</span> → Necesito convertir a mismo
+            denominador
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 14: Ejercicio 3 - Introducción -->
+      <div class="slide">
+        <div class="slide-counter">14/22</div>
+        <h2>🧮 EJERCICIO 3: ¿Cuál listón es más corto y cuál más largo?</h2>
+
+        <div class="example-box">
+          <h3>🎨 Luisa tiene pedazos de listón que miden:</h3>
+          <p>• 1/4 de metro</p>
+          <p>• 5/7 de metro</p>
+          <p>• 4/9 de metro</p>
+          <p>• 7/12 de metro</p>
+          <p>• 9/8 de metro</p>
+          <p>• 5/6 de metro</p>
+          <p>• 3/4 de metro</p>
+          <p>• 1/7 de metro</p>
+        </div>
+
+        <div class="step-box">
+          <h3>🎯 Estrategia:</h3>
+          <p>
+            Como todos tienen denominadores diferentes, vamos a convertir cada
+            fracción a decimal para poder compararlos fácilmente.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 15: Conversión a decimales paso a paso -->
+      <div class="slide">
+        <div class="slide-counter">15/22</div>
+        <h2>PASO 1: ¿Qué significa convertir una fracción a decimal?</h2>
+
+        <div class="definition-box">
+          <h3>📐 Concepto:</h3>
+          <p>
+            Significa:
+            <strong
+              >"Si divido el número de arriba entre el número de abajo, ¿cuánto
+              me da?"</strong
+            >
+          </p>
+        </div>
+
+        <div class="example-box">
+          <h3>🔢 Ejemplo detallado con 1/4:</h3>
+          <p>
+            ¿Qué significa 1/4 en decimal? Significa: <strong>1 ÷ 4</strong>
+          </p>
+
+          <div class="math-steps">
+            <h4>División paso a paso:</h4>
+            <p>1. Escribo: 1 ÷ 4</p>
+            <p>
+              2. Como 1 es menor que 4, agrego un punto decimal y un cero: 1.0 ÷
+              4
+            </p>
+            <p>
+              3. Pregunto: ¿cuántas veces cabe 4 en 10? → 2 veces (porque 4 × 2
+              = 8)
+            </p>
+            <p>4. Resto: 10 - 8 = 2</p>
+            <p>5. Bajo otro cero: 20 ÷ 4 = 5 exacto</p>
+            <p>6. Resultado: 1/4 = 0.25</p>
+          </div>
+
+          <div class="verification-box">
+            <h3>¿Cómo verifico que está correcto?</h3>
+            <p>0.25 × 4 = 1.00 ✓ ¡Correcto!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 16: Tabla completa de conversiones -->
+      <div class="slide">
+        <div class="slide-counter">16/22</div>
+        <h2>PASO 2: Tabla completa de conversiones</h2>
+
+        <div class="table-container">
+          <table>
+            <tr>
+              <th>LISTÓN</th>
+              <th>FRACCIÓN</th>
+              <th>DIVISIÓN</th>
+              <th>DECIMAL</th>
+            </tr>
+            <tr>
+              <td>A</td>
+              <td>1/4</td>
+              <td>1 ÷ 4</td>
+              <td>0.25</td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>5/7</td>
+              <td>5 ÷ 7</td>
+              <td>0.714</td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>4/9</td>
+              <td>4 ÷ 9</td>
+              <td>0.444</td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>7/12</td>
+              <td>7 ÷ 12</td>
+              <td>0.583</td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td>9/8</td>
+              <td>9 ÷ 8</td>
+              <td>1.125</td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>5/6</td>
+              <td>5 ÷ 6</td>
+              <td>0.833</td>
+            </tr>
+            <tr>
+              <td>G</td>
+              <td>3/4</td>
+              <td>3 ÷ 4</td>
+              <td>0.75</td>
+            </tr>
+            <tr>
+              <td>H</td>
+              <td>1/7</td>
+              <td>1 ÷ 7</td>
+              <td>0.143</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="step-box">
+          <h3>📝 Observación importante:</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

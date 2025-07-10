@@ -11,7 +11,17 @@ const Footer = () => {
         color: "#888",
       }}
     >
-      <p>&copy; 2025 emisanzmor</p>
+      <footer
+        style={{
+          fontSize: "0.85em",
+          color: "#888",
+          textAlign: "center",
+          padding: "2rem 0",
+        }}
+      >
+        <p>© 2025 emisanzmor • Legal name: Emiliano Sánchez Moreno</p>
+        <p>All public work is published under the name Emi Sanzmor.</p>
+      </footer>
     </footer>
   );
 };
