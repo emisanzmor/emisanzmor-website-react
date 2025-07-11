@@ -10,6 +10,7 @@ const LoadingScreen = ({
   const [shouldRender, setShouldRender] = useState(isVisible);
   const [animationPhase, setAnimationPhase] = useState("fadeIn"); // 'fadeIn', 'fadeOut', 'hidden'
   const location = useLocation();
+  const prevLocationRef = useRef(location.pathname);
 
   // Refs for timeouts
   const fadeOutTimeoutRef = useRef(null);

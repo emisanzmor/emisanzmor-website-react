@@ -16,36 +16,13 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      style={{
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        padding: "2rem 2rem",
-        margintop: "2rem",
-      }}
+      className="min-h-[70vh] flex flex-col justify-start px-8 pt-8"
     >
-      <h2
-        style={{
-          fontSize: "63.967999px",
-          fontWeight: 700,
-          letterSpacing: "-4px",
-          color: "#e5e5e5",
-          margin: "2rem 2rem 0 2rem",
-        }}
-      >
+      <h2 className="text-[64px] font-bold tracking-[-4px] text-[#e5e5e5] ml-8 mb-28 mt-16">
         projects
       </h2>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr",
-          gridTemplateRows: "repeat(3, 250px)",
-          gap: "30px",
-          marginTop: "10rem",
-        }}
-      >
+      <div className="flex flex-col">
         {projectsData.map((project) => (
           <ProjectItem
             key={project.id}
