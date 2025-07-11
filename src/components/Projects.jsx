@@ -18,7 +18,7 @@ const Projects = () => {
       id="projects"
       className="min-h-[70vh] flex flex-col justify-start px-8 pt-8"
     >
-      <h2 className="text-[64px] font-bold tracking-[-4px] text-[#e5e5e5] ml-8 mb-28 mt-16">
+      <h2 className="text-[64px] font-bold tracking-[-4px] text-[#e5e5e5] ml-8 mb-56 mt-28">
         projects
       </h2>
 

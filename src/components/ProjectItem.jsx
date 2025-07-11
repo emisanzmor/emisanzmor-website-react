@@ -5,7 +5,7 @@ const ProjectItem = ({ title, image }) => {
     // Main container
     <div className="flex flex-col md:flex-row items-stretch w-full min-h-[500px] bg-amber-50">
       {/* Left side: text */}
-      <div className="bg-black text-white pt-0 pb-8 pl-8 md:w-1/3 w-full flex flex-col justify-start items-start">
+      <div className="bg-black text-white pt-2 pb-8 pl-8 md:w-1/3 w-full flex flex-col justify-start items-start">
         <h3 className="text-base font-medium">{title}</h3>
       </div>
       {/* Right side: image */}

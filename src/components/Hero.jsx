@@ -1,3 +1,6 @@
+/*
+[Hero component disabled - might reuse in future]
+
 import React from "react";
 
 const Hero = () => {
@@ -20,11 +23,11 @@ const Hero = () => {
           lineHeight: "14rem",
         }}
       >
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp; &nbsp; &nbsp;
+      
       </h1>
     </section>
   );
 };
 
 export default Hero;
+*/

@@ -10,6 +10,10 @@ const Header = ({ setIsLoading }) => {
   return (
     <header
       style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "flex-start",
@@ -91,19 +95,21 @@ const Header = ({ setIsLoading }) => {
           </li>
 
           <li>
-            <a
-              href="#contact"
+            <button
+              onClick={() => delayedNavigate("/contact")}
               style={{
+                background: "none",
                 color: "#fff",
                 textDecoration: "none",
                 fontSize: "1rem",
                 fontWeight: 450,
                 letterSpacing: "0px",
                 transition: "color 0.2s",
+                cursor: "pointer",
               }}
             >
               contact
-            </a>
+            </button>
           </li>
         </ul>
       </nav>
