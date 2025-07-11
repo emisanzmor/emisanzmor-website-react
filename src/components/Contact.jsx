@@ -8,7 +8,7 @@ const Contact = () => {
         contact
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 border-t border-white/10 pb-14">
+      <div className="grid grid-cols-1 md:grid-cols-1 border-t border-white/10 pb-14">
         {/* EMILIANO SANCHEZ contact */}
         <div className="p-8">
           <div className="flex flex-row">
