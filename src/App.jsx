@@ -6,6 +6,7 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
 import ProjectsPage from "./pages/ProjectsPage";
+import Contact from "./components/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,6 +52,7 @@ function App() {
           <Routes>
             <Route path="/" element={<About />} />
             <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer /> {/* Footer Section */}

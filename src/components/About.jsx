@@ -10,9 +10,7 @@ const About = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
-        padding: "7rem 2rem",
-
-        marginTop: "2rem",
+        padding: "10rem 2rem 10rem",
       }}
     >
       <div
