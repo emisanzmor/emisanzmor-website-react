@@ -12,13 +12,13 @@ function App() {
   const [isExiting, setIsExiting] = useState(false);
 
   // Deactivate overflow during Loading Screen
-  useEffect(() => {
+  /*useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = "hidden";
 
       return () => (document.body.style.overflow = "auto");
     }
-  }, [isLoading]);
+  }, [isLoading]); */
 
   useEffect(() => {
     const timer = setTimeout(() => {

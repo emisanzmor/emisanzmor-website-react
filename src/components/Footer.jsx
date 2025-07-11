@@ -3,7 +3,6 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      id="contact"
       style={{
         textAlign: "center",
         padding: "1rem",
