@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import Header from "./components/Header";
 import About from "./components/About";
@@ -10,24 +11,19 @@ import Contact from "./components/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [isExiting, setIsExiting] = useState(false);
 
-  // Deactivate overflow during Loading Screen
-  /*useEffect(() => {
+  // Disabling scroll during loading
+  useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = "hidden";
-
-      return () => (document.body.style.overflow = "auto");
+    } else {
+      document.body.style.overflow = "auto";
     }
-  }, [isLoading]); */
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // Show loading screen for 2 seconds
-
-    return () => clearTimeout(timer);
-  }, []);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isLoading]);
 
   return (
     <div
@@ -41,21 +37,25 @@ function App() {
       }}
     >
       <Router>
-        <LoadingScreen
-          isVisible={isLoading}
-          isExiting={isExiting}
-          setIsExiting={setIsExiting}
-          setIsLoading={setIsLoading}
-        />
-        <Header setIsLoading={setIsLoading} /> {/* Header section */}
-        <main>
-          <Routes>
-            <Route path="/" element={<About />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
-        <Footer /> {/* Footer Section */}
+        <LoadingScreen isVisible={isLoading} setIsLoading={setIsLoading} />
+
+        {!isLoading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Header setIsLoading={setIsLoading} />
+            <main>
+              <Routes>
+                <Route path="/" element={<About />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/contact" element={<Contact />} />
+              </Routes>
+            </main>
+            <Footer />
+          </motion.div>
+        )}
       </Router>
     </div>
   );

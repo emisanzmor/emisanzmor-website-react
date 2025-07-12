@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+/*
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -66,3 +66,4 @@
 .animate-fade-to-black {
   animation: fadeToBlack 1.5s ease-out forwards;
 }
+*/

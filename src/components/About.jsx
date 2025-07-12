@@ -1,8 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section
+    <motion.section
       id="about"
       className="min-h-[70vh] sm:min-h-[74vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto"
     >
@@ -34,7 +35,7 @@ const About = () => {
           EMILIANO SANCHEZ
         </h2>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

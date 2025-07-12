@@ -1,121 +1,103 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
-const LoadingScreen = ({
-  isVisible,
-  isExiting,
-  setIsExiting,
-  setIsLoading,
-}) => {
+const LoadingScreen = ({ isVisible, setIsLoading }) => {
   const [shouldRender, setShouldRender] = useState(isVisible);
-  const [animationPhase, setAnimationPhase] = useState("fadeIn"); // 'fadeIn', 'fadeOut', 'hidden'
+  const [isExiting, setIsExiting] = useState(false);
   const location = useLocation();
-  const prevLocationRef = useRef(location.pathname);
+  const timeoutRef = useRef(null);
 
-  // Refs for timeouts
-  const fadeOutTimeoutRef = useRef(null);
-  const hideTimeoutRef = useRef(null);
-
-  const isHome = location.pathname === "/";
-
-  // Clear all timeouts on unmount or change
-  const clearAllTimeouts = () => {
-    if (fadeOutTimeoutRef.current) {
-      clearTimeout(fadeOutTimeoutRef.current);
-      fadeOutTimeoutRef.current = null;
-    }
-    if (hideTimeoutRef.current) {
-      clearTimeout(hideTimeoutRef.current);
-      hideTimeoutRef.current = null;
+  // Clear timeout helper
+  const clearCurrentTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
   };
 
+  // Handle route changes and visibility
   useEffect(() => {
-    if (isVisible && !isExiting) {
-      // Shows loading screen
+    clearCurrentTimeout();
+
+    if (isVisible) {
       setShouldRender(true);
-      setAnimationPhase("fadeIn");
+      setIsExiting(false);
 
-      console.log("Iniciando loading screen");
-    }
-  }, [isVisible, isExiting]);
-
-  useEffect(() => {
-    if (hideTimeoutRef.current) {
-      clearTimeout(hideTimeoutRef.current);
-      hideTimeoutRef.current = null;
-    }
-
-    if (shouldRender && !isExiting) {
-      // Fadeout after 2 seconds
-      fadeOutTimeoutRef.current = setTimeout(() => {
-        setAnimationPhase("fadeOut");
+      // Start exit animation after 2 seconds
+      timeoutRef.current = setTimeout(() => {
         setIsExiting(true);
-
-        console.log("Iniciando fade out");
-        console.log("isVisible:", isVisible);
-        console.log("isExiting:", isExiting);
-        console.log("shouldRender:", shouldRender);
       }, 2000);
     }
-  }, [shouldRender, isExiting]);
 
-  useEffect(() => {
-    if (!shouldRender) return;
+    return clearCurrentTimeout;
+  }, [location.pathname, isVisible]);
 
-    // Timeout after animation
-    hideTimeoutRef.current = setTimeout(() => {
-      setShouldRender(false);
-      setIsLoading(false);
-      setIsExiting(false);
-      setAnimationPhase("hidden");
-
-      console.log("Loading screen oculto completamente");
-      console.log("isVisible:", isVisible);
-      console.log("isExiting:", isExiting);
-      console.log("shouldRender:", shouldRender);
-    }, 3000);
-  }, [shouldRender]);
-
-  useEffect(() => {
-    return clearAllTimeouts;
-  }, []);
-
-  const getAnimationClasses = () => {
-    if (animationPhase === "fadeIn") {
-      if (isHome) {
-        return "animate-fade-in animate-duration-[1000ms] animate-ease-in-out";
-      } else {
-        return "animate-fade-to-black animate-duration-[1000ms] animate-ease-in-out";
-      }
-    } else if (animationPhase === "fadeOut") {
-      if (isHome) {
-        return "animate-fade-up animate-duration-[2000ms] animate-delay-[500ms] animate-ease-in-out";
-      } else {
-        return "animate-fade-from-black animate-duration-[2000ms] animate-ease-in-out";
-      }
-    }
-    return "";
+  // Handle exit animation completion
+  const handleExitComplete = () => {
+    setShouldRender(false);
+    setIsLoading(false);
+    setIsExiting(false);
   };
 
-  if (!shouldRender) return null;
+  // Cleanup on unmount
+  useEffect(() => {
+    return clearCurrentTimeout;
+  }, []);
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black ${getAnimationClasses()}`}
-      // Temporary fix for unresponsive Projects page
-      style={{
-        pointerEvents: animationPhase === "fadeOut" ? "none" : "auto",
-      }}
-    >
-      {/* Content */}
-      <div className="text-center">
-        {/* emisanzmor - Title */}
-        <h1 className="text-5xl font-bold animate-pulse text-white mb-4 tracking-[-4px]">
-          emisanzmor.
-        </h1>
-      </div>
-    </div>
+    <AnimatePresence onExitComplete={handleExitComplete}>
+      {shouldRender && !isExiting && (
+        <motion.div
+          key="loading-screen"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: 1,
+            transition: { duration: 0.4 },
+          }}
+          exit={{
+            opacity: 0,
+            transition: { duration: 0.6 },
+          }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.4, ease: "easeInOut" },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.4, ease: "easeInOut" },
+            }}
+            className="absolute inset-0 bg-black z-0"
+          />
+
+          <div className="relative z-10 text-center">
+            <motion.h1
+              className="text-5xl font-bold text-white mb-4 tracking-[-4px]"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                transition: { delay: 0.3, duration: 0.6 },
+              }}
+            >
+              emisanzmor.
+            </motion.h1>
+            <motion.div
+              className="w-16 h-1 bg-white mx-auto mt-8"
+              initial={{ scaleX: 0 }}
+              animate={{
+                scaleX: 1,
+                transition: { delay: 0.8, duration: 0.8 },
+              }}
+            />
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
