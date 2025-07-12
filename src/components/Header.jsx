@@ -59,6 +59,7 @@ const Header = ({ setIsLoading }) => {
           <li>
             <button
               onClick={() => delayedNavigate("/")}
+              className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
                 border: "none",
@@ -78,6 +79,7 @@ const Header = ({ setIsLoading }) => {
           <li>
             <button
               onClick={() => delayedNavigate("/projects")}
+              className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
                 border: "none",
@@ -97,6 +99,7 @@ const Header = ({ setIsLoading }) => {
           <li>
             <button
               onClick={() => delayedNavigate("/contact")}
+              className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
                 color: "#fff",

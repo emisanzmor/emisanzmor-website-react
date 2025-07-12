@@ -22,6 +22,7 @@ const SocialLinks = () => {
     >
       {socialLinks.map((link) => (
         <a
+          className="transition-all duration-300 ease-in-out hover:scale-105"
           key={link.name}
           href={link.url}
           target="_blank"

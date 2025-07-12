@@ -4,7 +4,7 @@ import SocialLinks from "./SocialLinks";
 const Contact = () => {
   return (
     <section id="contact" className="bg-black text-white px-8 py-8 min-h-fit">
-      <h1 className="text-[64px] font-bold tracking-[-4px] text-[#e5e5e5] ml-8 mb-56 mt-28">
+      <h1 className="text-[290px] font-bold tracking-[-4px] text-[#e5e5e5] ml-4  mt-4">
         contact
       </h1>
 

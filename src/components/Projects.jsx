@@ -18,9 +18,9 @@ const Projects = () => {
       id="projects"
       className="min-h-[70vh] flex flex-col justify-start px-8 pt-8"
     >
-      <h2 className="text-[64px] font-bold tracking-[-4px] text-[#e5e5e5] ml-8 mb-56 mt-28">
+      <h1 className="text-[290px] font-bold tracking-[-4px] text-[#e5e5e5] ml-4  mt-4">
         projects
-      </h2>
+      </h1>
 
       <div className="flex flex-col">
         {projectsData.map((project) => (
