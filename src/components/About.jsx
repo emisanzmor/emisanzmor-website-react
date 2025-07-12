@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-[70vh] sm:min-h-[80vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto"
+      className="min-h-[70vh] sm:min-h-[74vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto"
     >
       <div className="text-justify w-[450px] max-w-lg font-base flex flex-col items-start mt-50">
         <p className="text-base sm:text-base leading-relaxed text-white mb-8">
@@ -25,7 +25,8 @@ const About = () => {
       </div>
       {/* Profile Pic placeholder */}
 
-      <div className="absolute bottom-2 left-2 sm:left-4">
+      <div className="absolute bottom-[-70px] left-2 sm:left-4">
+        <div className="border-t border-white/10 w-full mb-8" />
         <p className="text-sm text-gray-400 ml-2 mb-[-36px]">
           MOBILE · WEB DEVELOPER
         </p>
