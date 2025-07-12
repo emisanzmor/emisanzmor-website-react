@@ -9,7 +9,7 @@ const About = () => {
     >
       <div className="text-justify w-[450px] max-w-lg font-base flex flex-col items-start mt-50">
         <p className="text-base sm:text-base leading-relaxed text-white mb-8">
-          I’m a mobile developer passionate about building digital experiences
+          I’m a mobilee developer passionate about building digital experiences
           that truly connect with users. While mobile is my core strength, I’m
           currently expanding into web development with React.
         </p>
