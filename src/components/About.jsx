@@ -26,7 +26,7 @@ const About = () => {
       </div>
       {/* Profile Pic placeholder */}
 
-      <div className="absolute bottom-[-70px] left-2 sm:left-4">
+      <div className="absolute bottom-[-70px] left-2 sm:left-2">
         <div className="border-t border-white/10 w-full mb-8" />
         <p className="text-sm text-gray-400 ml-2 mb-[-36px]">
           MOBILE · WEB DEVELOPER
