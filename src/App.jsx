@@ -48,7 +48,10 @@ function App() {
             <Header setIsLoading={setIsLoading} />
             <main>
               <Routes>
-                <Route path="/" element={<About />} />
+                <Route
+                  path="/"
+                  element={<About setIsLoading={setIsLoading} />}
+                />
                 <Route path="/projects" element={<ProjectsPage />} />
                 <Route path="/contact" element={<Contact />} />
               </Routes>

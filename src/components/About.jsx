@@ -1,7 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import useLoadingNavigate from "../hooks/useLoadingNavigate";
 
-const About = () => {
+const About = ({ setIsLoading }) => {
+  const navigateWithLoading = useLoadingNavigate(setIsLoading);
+
   return (
     <motion.section
       id="about"
@@ -17,12 +21,14 @@ const About = () => {
           Outside of coding, I explore emerging tech and build side projects
           that challenge and inspire me to keep growing as a developer.
         </p>
-        <a
-          href="/projects"
+
+        <button
+          onClick={() => navigateWithLoading("/projects")}
           className="mt-6 text-sm no-underline visited:text-white !text-white hover:text-white font-medium transition-all duration-300 ease-in-out hover:scale-105"
+          style={{ background: "none" }}
         >
           View my work →
-        </a>
+        </button>
       </div>
       {/* Profile Pic placeholder */}
 

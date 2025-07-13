@@ -1,12 +1,10 @@
 import React from "react";
-import useDelayedNavigate from "./useDelayedNavigate"; // Ajusta la ruta si está en otra carpeta
+import { useNavigate } from "react-router-dom"; // Ajusta la ruta si está en otra carpeta
 import { useState } from "react";
+import useLoadingNavigate from "../hooks/useLoadingNavigate";
 
 const Header = ({ setIsLoading }) => {
-  const delayedNavigate = useDelayedNavigate(() => {
-    setIsLoading(true);
-  }, 1000);
-
+  const navigateWithLoading = useLoadingNavigate(setIsLoading);
   return (
     <header
       style={{
@@ -58,7 +56,7 @@ const Header = ({ setIsLoading }) => {
         >
           <li>
             <button
-              onClick={() => delayedNavigate("/")}
+              onClick={() => navigateWithLoading("/")}
               className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
@@ -78,7 +76,7 @@ const Header = ({ setIsLoading }) => {
 
           <li>
             <button
-              onClick={() => delayedNavigate("/projects")}
+              onClick={() => navigateWithLoading("/projects")}
               className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
@@ -98,7 +96,7 @@ const Header = ({ setIsLoading }) => {
 
           <li>
             <button
-              onClick={() => delayedNavigate("/contact")}
+              onClick={() => navigateWithLoading("/contact")}
               className="transition-all duration-300 ease-in-out hover:scale-105"
               style={{
                 background: "none",
