@@ -9,28 +9,14 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "flex-start",
-        marginTop: "1.5rem",
-        letterSpacing: "0.5px",
-        fontWeight: 500,
-        gap: "2rem",
-      }}
-    >
+    <div className="flex flex-row items-start mt-[1.5rem] tracking-wide font-medium gap-8">
       {socialLinks.map((link) => (
         <a
-          className="transition-all duration-300 ease-in-out hover:scale-105"
+          className="transition-all duration-300 ease-in-out hover:scale-105 !text-white no-underline"
           key={link.name}
           href={link.url}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            color: "#141414",
-            textDecoration: "none",
-          }}
         >
           {link.name}
         </a>

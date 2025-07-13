@@ -1,120 +1,123 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Ajusta la ruta si está en otra carpeta
-import { useState } from "react";
+import { motion } from "framer-motion";
 import useLoadingNavigate from "../hooks/useLoadingNavigate";
 
 const Header = ({ setIsLoading }) => {
   const navigateWithLoading = useLoadingNavigate(setIsLoading);
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const navItemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+    hover: {
+      scale: 1.05,
+      color: "#888",
+      transition: {
+        duration: 0.1,
+        ease: "easeInOut",
+      },
+    },
+    tap: {
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
+  const navVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
   return (
-    <header
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100%",
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-      }}
+    <motion.header
+      className="fixed top-0 left-0 w-full flex items-start justify-start z-50"
+      variants={headerVariants}
+      initial="hidden"
+      animate="visible"
     >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          marginLeft: "2rem",
-        }}
+      <motion.div
+        className="flex flex-col items-start ml-8"
+        variants={titleVariants}
       >
-        <h1
-          style={{
-            fontSize: "3rem",
-            fontWeight: 600,
-            letterSpacing: "-4px",
-            margin: "1rem 0 0 0",
-            lineHeight: 1,
+        <motion.h1
+          className="text-5xl font-semibold -tracking-wider mt-4 leading-none text-white"
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 },
           }}
         >
           emisanzmor.
-        </h1>
-      </div>
-      <nav
-        style={{
-          width: "100%",
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "flex-start",
-          marginTop: "1rem",
-        }}
+        </motion.h1>
+      </motion.div>
+
+      <motion.nav
+        className="w-full flex justify-end items-start mt-4"
+        variants={navVariants}
       >
-        <ul
-          style={{
-            listStyle: "none",
-            display: "flex",
-            gap: "6rem",
-            margin: "1rem 3rem 0 0",
-          }}
-        >
-          <li>
-            <button
-              onClick={() => navigateWithLoading("/")}
-              className="transition-all duration-300 ease-in-out hover:scale-105"
-              style={{
-                background: "none",
-                border: "none",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: "1rem",
-                fontWeight: 450,
-                letterSpacing: "0px",
-                transition: "color 0.2s",
-                cursor: "pointer",
-              }}
-            >
-              about
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={() => navigateWithLoading("/projects")}
-              className="transition-all duration-300 ease-in-out hover:scale-105"
-              style={{
-                background: "none",
-                border: "none",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: "1rem",
-                fontWeight: 450,
-                letterSpacing: "0px",
-                transition: "color 0.2s",
-                cursor: "pointer",
-              }}
-            >
-              projects
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={() => navigateWithLoading("/contact")}
-              className="transition-all duration-300 ease-in-out hover:scale-105"
-              style={{
-                background: "none",
-                color: "#fff",
-                textDecoration: "none",
-                fontSize: "1rem",
-                fontWeight: 450,
-                letterSpacing: "0px",
-                transition: "color 0.2s",
-                cursor: "pointer",
-              }}
-            >
-              contact
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+        <motion.ul className="list-none flex gap-24 mt-4 mr-12">
+          {[
+            { text: "about", path: "/" },
+            { text: "projects", path: "/projects" },
+            { text: "contact", path: "/contact" },
+          ].map((item, index) => (
+            <motion.li key={index} variants={navItemVariants}>
+              <motion.div className="relative">
+                <motion.button
+                  onClick={() => navigateWithLoading(item.path)}
+                  className="bg-transparent border-none text-white text-base font-normal cursor-pointer relative"
+                  variants={navItemVariants}
+                  whileHover="hover"
+                  whileTap="tap"
+                  style={{
+                    background: "none",
+                  }}
+                >
+                  {item.text}
+                </motion.button>
+              </motion.div>
+            </motion.li>
+          ))}
+        </motion.ul>
+      </motion.nav>
+    </motion.header>
   );
 };
 

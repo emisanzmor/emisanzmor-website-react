@@ -27,13 +27,9 @@ function App() {
 
   return (
     <div
-      className="bg-black"
+      className="bg-black text-white m-0 p-0 min-h-screen"
       style={{
-        color: "#fff",
         fontFamily: '"Helvetica Neue", Arial, sans-serif',
-        margin: 0,
-        padding: 0,
-        minHeight: "100vh",
       }}
     >
       <Router>
