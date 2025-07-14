@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import useLoadingNavigate from "../hooks/useLoadingNavigate";
+import Ticker from "./Ticker";
 
 const About = ({ setIsLoading }) => {
   const navigateWithLoading = useLoadingNavigate(setIsLoading);
@@ -50,7 +51,7 @@ const About = ({ setIsLoading }) => {
   return (
     <motion.section
       id="about"
-      className="min-h-[70vh] sm:min-h-[74vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto"
+      className="min-h-[70vh] sm:min-h-[74vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto "
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -87,15 +88,14 @@ const About = ({ setIsLoading }) => {
         </motion.button>
       </motion.div>
 
-      {/* Profile Pic placeholder */}
-      <div className="absolute bottom-[-70px] left-2 sm:left-2">
-        <div className="border-t border-white/10 w-full mb-8" />
-
-        <p className="text-sm text-gray-400 ml-2 mb-[-36px]">
+      <div className="absolute bottom-[-70px] left-1/2 transform -translate-x-1/2 w-screen">
+        <Ticker className="mb-5" />
+        <div className="border-t border-white/10 w-full mb-4" />
+        <p className="text-sm text-gray-400 ml-4 mb-[-36px]">
           MOBILE · WEB DEVELOPER
         </p>
 
-        <h2 className="text-[48px] sm:text-[120px] md:text-[147px] font-bold tracking-[-4px] text-[#e5e5e5] mb-4">
+        <h2 className="text-[48px] sm:text-[120px] md:text-[147px] font-bold tracking-[-4px] text-[#e5e5e5] mb-4 ml-2">
           EMILIANO SANCHEZ
         </h2>
       </div>
