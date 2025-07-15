@@ -51,17 +51,17 @@ const About = ({ setIsLoading }) => {
   return (
     <motion.section
       id="about"
-      className="min-h-[70vh] sm:min-h-[74vh] flex flex-col justify-start pt-16 pb-4 px-4 sm:px-8 mb-60 max-w-6xl mx-auto "
+      className="min-h-screen flex flex-col justify-start pt-4 pb-[env(safe-area-inset-bottom)] px-12 sm:min-h-[74vh] sm:pt-16 sm:pb-4 sm:px-8 sm:mb-60 sm:max-w-6xl mx-auto "
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="text-justify w-[450px] max-w-lg font-base flex flex-col items-start mt-50"
+        className="flex flex-col items-start text-justify w-full max-w-xs mt-40 sm:w-[450px] sm:max-w-md sm:mt-50"
         variants={containerVariants}
       >
         <motion.p
-          className="text-base sm:text-base leading-relaxed text-white mb-8"
+          className="text-sm sm:text-base leading-relaxed text-white mb-8"
           variants={itemVariants}
         >
           I'm a mobile developer passionate about building digital experiences
@@ -70,7 +70,7 @@ const About = ({ setIsLoading }) => {
         </motion.p>
 
         <motion.p
-          className="text-base sm:text-base leading-relaxed text-gray-300"
+          className="text-sm sm:text-base leading-relaxed text-gray-300"
           variants={itemVariants}
         >
           Outside of coding, I explore emerging tech and build side projects
@@ -88,14 +88,14 @@ const About = ({ setIsLoading }) => {
         </motion.button>
       </motion.div>
 
-      <div className="absolute bottom-[-70px] left-1/2 transform -translate-x-1/2 w-screen">
+      <div className="absolute bottom-40 left-1/2 transform -translate-x-1/2 w-screen sm:absolute sm:bottom-[20px]">
         <Ticker className="mb-5" />
         <div className="border-t border-white/10 w-full mb-4" />
-        <p className="text-sm text-gray-400 ml-4 mb-[-36px]">
+        <p className="text-xs ml-2 -mb-2 text-gray-400 sm:ml-4 sm:mb-[-36px] sm:text-sm">
           MOBILE · WEB DEVELOPER
         </p>
 
-        <h2 className="text-[48px] sm:text-[120px] md:text-[147px] font-bold tracking-[-4px] text-[#e5e5e5] mb-4 ml-2">
+        <h2 className="w-full text-[45px] ml-1 font-bold tracking-[-4px] text-[#e5e5e5] sm:text-[147px] sm:mb-4 sm:ml-2">
           EMILIANO SANCHEZ
         </h2>
       </div>

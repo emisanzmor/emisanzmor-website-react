@@ -68,7 +68,7 @@ const Header = ({ setIsLoading }) => {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 w-full flex items-start justify-start z-50"
+      className="fixed top-0 left-0 w-full flex items-start justify-start z-50 pt-[env(safe-area-inset-top)] bg-black pb-4"
       variants={headerVariants}
       initial="hidden"
       animate="visible"
@@ -78,7 +78,7 @@ const Header = ({ setIsLoading }) => {
         variants={titleVariants}
       >
         <motion.h1
-          className="text-5xl font-semibold -tracking-wider mt-4 leading-none text-white"
+          className="text-4xl mt-4 font-semibold -tracking-wider sm:text-5xl leading-none text-white"
           whileHover={{
             scale: 1.02,
             transition: { duration: 0.3 },
