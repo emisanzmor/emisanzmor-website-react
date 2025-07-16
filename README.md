@@ -35,7 +35,7 @@ This project is deployed via Netlify.
   
 <img width="200" alt="IMG_0693" src="https://github.com/user-attachments/assets/5a9cba09-a2d9-4284-96ba-ed4a9df3b47e" />
 <img width="200" alt="IMG_0686" src="https://github.com/user-attachments/assets/c27c6d14-8ab1-42aa-81de-195683d5bc60" />
-<img width="200" alt="IMG_0688" src="https://github.com/user-attachments/assets/b0c09225-d8aa-4af2-a902-b93bb90e7d7d" />
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/78551331-cd63-45ba-9b20-d1a5c588ad12" />
 <img width="200" alt="IMG_0687" src="https://github.com/user-attachments/assets/23051109-5437-4447-be22-cf4b8ddf064e" />
 
 * **PC**
