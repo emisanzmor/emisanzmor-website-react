@@ -1,4 +1,5 @@
 import React from "react";
+import placeholder from "../assets/emisanzmor_placeholder.png";
 import ProjectItem from "./ProjectItem";
 import { motion } from "framer-motion";
 
@@ -7,15 +8,15 @@ const Projects = () => {
     {
       id: 1,
       title: "P1-3ES",
-      image: "src/assets/emisanzmor_placeholder.png",
+      image: placeholder,
     },
-    { id: 2, title: "P2-UXD", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 3, title: "P3-NV7", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 4, title: "P4-KAI", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 5, title: "P5-ZNT", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 6, title: "P6-AUR", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 7, title: "P7-RXN", image: "src/assets/emisanzmor_placeholder.png" },
-    { id: 8, title: "P8-SLC", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 2, title: "P2-UXD", image: placeholder },
+    { id: 3, title: "P3-NV7", image: placeholder },
+    { id: 4, title: "P4-KAI", image: placeholder },
+    { id: 5, title: "P5-ZNT", image: placeholder },
+    { id: 6, title: "P6-AUR", image: placeholder },
+    { id: 7, title: "P7-RXN", image: placeholder },
+    { id: 8, title: "P8-SLC", image: placeholder },
   ];
 
   const containerVariants = {
