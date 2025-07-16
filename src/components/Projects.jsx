@@ -4,14 +4,18 @@ import { motion } from "framer-motion";
 
 const Projects = () => {
   const projectsData = [
-    { id: 1, title: "Project", image: "/images/blanksquare.png" },
-    { id: 2, title: "Project", image: "/images/blanksquare.png" },
-    { id: 3, title: "Project", image: "/images/blanksquare.png" },
-    { id: 4, title: "Project", image: "/images/blanksquare.png" },
-    { id: 5, title: "Project", image: "/images/blanksquare.png" },
-    { id: 6, title: "Project", image: "/images/blanksquare.png" },
-    { id: 7, title: "Project", image: "/images/blanksquare.png" },
-    { id: 8, title: "Project", image: "/images/blanksquare.png" },
+    {
+      id: 1,
+      title: "P1-3ES",
+      image: "src/assets/emisanzmor_placeholder.png",
+    },
+    { id: 2, title: "P2-UXD", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 3, title: "P3-NV7", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 4, title: "P4-KAI", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 5, title: "P5-ZNT", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 6, title: "P6-AUR", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 7, title: "P7-RXN", image: "src/assets/emisanzmor_placeholder.png" },
+    { id: 8, title: "P8-SLC", image: "src/assets/emisanzmor_placeholder.png" },
   ];
 
   const containerVariants = {
