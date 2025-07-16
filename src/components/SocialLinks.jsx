@@ -9,7 +9,7 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="flex flex-row items-start mt-[1.5rem] tracking-wide font-medium gap-8">
+    <div className="flex flex-col sm:flex-row items-start mt-[1.5rem] tracking-wide font-medium  gap-4 sm:gap-8">
       {socialLinks.map((link) => (
         <a
           className="transition-all duration-300 ease-in-out hover:scale-105 !text-white no-underline"

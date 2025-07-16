@@ -1,28 +1,117 @@
 import React from "react";
+import { motion } from "framer-motion";
 import SocialLinks from "./SocialLinks";
 
 const Contact = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
-    <section id="contact" className="bg-black text-white px-8 py-8 min-h-fit">
-      <div className="relative h-[400px] ml-4 mt-4">
-        <h1 className="text-[290px] font-bold tracking-[-4px] text-[#e5e5e5] ml-4  mt-4">
+    <motion.section
+      id="contact"
+      className="bg-black text-white min-h-screen flex flex-col justify-between pt-40 pb-[env(safe-area-inset-bottom)] sm:pt-30 sm:min-h-auto"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div
+        className="relative px-6 mb-5 sm:h-[400px] sm:ml-4 sm:mt-4 sm:px-0"
+        variants={titleVariants}
+      >
+        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:pb-8 sm:ml-4 sm:mt-4 sm:px-3 0 sm:tracking-[-4px] sm:leading-none">
           contact
-        </h1>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-1 border-t border-white/10 pb-14">
-        {/* EMILIANO SANCHEZ contact */}
-        <div className="p-8">
-          <div className="flex flex-row">
-            <p className="text-8xl font-semibold">EMILIANO SANCHEZ</p>
-            <p className="pt-2 pl-2 font-medium">[emisanzmor]</p>
-          </div>
-          <p className="text-sm text-gray-400 pt-4">MOBILE · WEB DEVELOPER</p>
-          <div>
-            <SocialLinks></SocialLinks>
-          </div>
+        </motion.h1>
+      </motion.div>
+
+      <motion.div
+        className="border-t border-white/10 flex-1 px-6 sm:px-8"
+        variants={containerVariants}
+      >
+        <div className="pt-8 sm:p-8">
+          <motion.div className="mb-6" variants={itemVariants}>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-0">
+              <motion.p className="text-[28px] leading-[24px] font-semibold break-words sm:text-8xl sm:leading-none">
+                EMILIANO SANCHEZ
+              </motion.p>
+              <motion.p
+                className="text-xs font-medium text-gray-400 sm:text-base sm:pt-2 sm:pl-2 sm:text-white"
+                variants={itemVariants}
+              >
+                [emisanzmor]
+              </motion.p>
+            </div>
+          </motion.div>
+
+          <motion.p
+            className="text-xs text-gray-400 mb-8 tracking-wide sm:text-sm sm:mb-6"
+            variants={itemVariants}
+          >
+            MOBILE · WEB DEVELOPER
+          </motion.p>
+
+          <motion.div className="mt-auto" variants={itemVariants}>
+            <SocialLinks />
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </motion.div>
+
+      <motion.div
+        className="px-6 py-6 border-t border-white/10 sm:hidden"
+        variants={itemVariants}
+      >
+        <motion.p
+          className="text-sm text-gray-300 text-center mb-4"
+          variants={itemVariants}
+        >
+          Let's work together
+        </motion.p>
+        <motion.div className="flex justify-center" variants={itemVariants}>
+          <motion.a
+            href="mailto:emisn1501@gmail.com"
+            className="bg-white text-black px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 hover:bg-gray-200 active:scale-95"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Get in touch
+          </motion.a>
+        </motion.div>
+      </motion.div>
+    </motion.section>
   );
 };
 

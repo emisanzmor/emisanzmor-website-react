@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectItem from "./ProjectItem";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const projectsData = [
@@ -14,27 +14,98 @@ const Projects = () => {
     { id: 8, title: "Project", image: "/images/blanksquare.png" },
   ];
 
-  return (
-    <section
-      id="projects"
-      className="min-h-[70vh] flex flex-col justify-start px-8 pt-8"
-    >
-      <div className="relative h-[400px] ml-4 mt-4">
-        <h1 className="text-[290px] font-bold tracking-[-4px] text-[#e5e5e5] z-0">
-          projects
-        </h1>
-      </div>
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
-      <div className="flex flex-col">
-        {projectsData.map((project) => (
-          <ProjectItem
-            key={project.id}
-            title={project.title}
-            image={project.image}
-          />
-        ))}
-      </div>
-    </section>
+  const titleVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const projectsListVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  return (
+    <motion.section
+      id="projects"
+      className="min-h-screen flex flex-col pt-40 pb-[env(safe-area-inset-bottom)] sm:min-h-[70vh] sm:pt-30 sm:pb-0"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div
+        className="relative px-6 mb-8 sm:h-[400px] sm:ml-4 sm:mt-4 sm:px-0"
+        variants={titleVariants}
+      >
+        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:tracking-[-4px] sm:z-0 sm:px-3 sm:mb-0 sm:leading-none">
+          projects
+        </motion.h1>
+      </motion.div>
+
+      <motion.div
+        className="flex-1 px-6 sm:px-0"
+        variants={projectsListVariants}
+      >
+        <div className="flex flex-col gap-4 sm:gap-0">
+          {projectsData.map((project, index) => (
+            <motion.div
+              key={project.id}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 30,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.1,
+                },
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
+              <ProjectItem title={project.title} image={project.image} />
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </motion.section>
   );
 };
 

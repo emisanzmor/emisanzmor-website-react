@@ -68,17 +68,17 @@ const Header = ({ setIsLoading }) => {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 w-full flex items-start justify-start z-50 pt-[env(safe-area-inset-top)] bg-black pb-4"
+      className="fixed top-0 left-0 w-full flex flex-col sm:flex-row items-start justify-between z-50 pt-[env(safe-area-inset-top)] bg-black pb-4 px-4 sm:px-8"
       variants={headerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="flex flex-col items-start ml-8"
+        className="flex flex-col items-center w-full sm:w-auto "
         variants={titleVariants}
       >
         <motion.h1
-          className="text-4xl mt-4 font-semibold -tracking-wider sm:text-5xl leading-none text-white"
+          className=" text-2xl sm:text-4xl lg:text-5xl mt-4 font-semibold -tracking-wider leading-none text-white"
           whileHover={{
             scale: 1.02,
             transition: { duration: 0.3 },
@@ -89,10 +89,10 @@ const Header = ({ setIsLoading }) => {
       </motion.div>
 
       <motion.nav
-        className="w-full flex justify-end items-start mt-4"
+        className="w-full sm:w-auto flex justify-center sm:justify-end items-start mt-2 sm:mt-2"
         variants={navVariants}
       >
-        <motion.ul className="list-none flex gap-24 mt-4 mr-12">
+        <motion.ul className="list-none flex gap-6 sm:gap-12 lg:gap-24 mt-2 sm:mt-4">
           {[
             { text: "about", path: "/" },
             { text: "projects", path: "/projects" },
@@ -102,7 +102,7 @@ const Header = ({ setIsLoading }) => {
               <motion.div className="relative">
                 <motion.button
                   onClick={() => navigateWithLoading(item.path)}
-                  className="bg-transparent border-none text-white text-base font-normal cursor-pointer relative"
+                  className="bg-transparent border-none text-white text-sm sm:text-base font-normal cursor-pointer relative px-2 py-1"
                   variants={navItemVariants}
                   whileHover="hover"
                   whileTap="tap"

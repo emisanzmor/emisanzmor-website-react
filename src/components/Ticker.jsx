@@ -44,7 +44,9 @@ const Ticker = ({ speed = 30, direction = "left", className = "" }) => {
             key={`first ${index}`}
             className="flex items-center flex-shrink-0"
           >
-            <span className="px-4 text-white text-sm font-medium">{item}</span>
+            <span className="text-xs px-4 text-white sm:text-sm font-medium">
+              {item}
+            </span>
             <span className="px-2 text-gray-400">•</span>
           </div>
         ))}
@@ -54,7 +56,9 @@ const Ticker = ({ speed = 30, direction = "left", className = "" }) => {
             key={`second ${index}`}
             className="flex items-center flex-shrink-0"
           >
-            <span className="px-4 text-white text-sm font-medium">{item}</span>
+            <span className="text-xs px-4 text-white sm:text-sm font-medium">
+              {item}
+            </span>
             <span className="px-2 text-gray-400">•</span>
           </div>
         ))}
