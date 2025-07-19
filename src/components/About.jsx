@@ -89,7 +89,7 @@ const About = ({ setIsLoading }) => {
       </motion.div>
 
       <motion.div
-        className="w-full sm:absolute sm:bottom-[-250px] sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:w-screen sm:pb-0"
+        className="w-full sm:absolute  sm:bottom-[-250px] sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:w-screen sm:pb-0"
         variants={itemVariants}
       >
         <Ticker className="mb-3 sm:mb-5" />

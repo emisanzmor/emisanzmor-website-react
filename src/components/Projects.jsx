@@ -66,7 +66,7 @@ const Projects = () => {
         className="relative px-6 mb-8 sm:h-[400px] sm:ml-4 sm:mt-4 sm:px-0"
         variants={titleVariants}
       >
-        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:tracking-[-4px] sm:z-0 sm:px-3 sm:mb-0 sm:leading-none">
+        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:tracking-[-4px] sm:z-0 sm:px-3 sm:mb-0 sm:leading-none ">
           projects
         </motion.h1>
       </motion.div>
