@@ -44,32 +44,32 @@ const Contact = () => {
   return (
     <motion.section
       id="contact"
-      className="bg-black text-white min-h-screen flex flex-col justify-between pt-40 pb-[env(safe-area-inset-bottom)] sm:pt-30 sm:min-h-auto"
+      className="bg-black text-white min-h-screen flex flex-col justify-between pt-40 pb-[env(safe-area-inset-bottom)] lg:pt-30 lg:min-h-auto"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="relative px-6 mb-5 sm:h-[400px] sm:ml-4 sm:mt-4 sm:px-0"
+        className="relative px-6 mb-5 lg:h-[400px] lg:ml-4 lg:mt-4 lg:px-0"
         variants={titleVariants}
       >
-        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:pb-8 sm:ml-4 sm:mt-4 sm:px-3 0 sm:tracking-[-4px] sm:leading-none">
+        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 lg:text-[290px] lg:pb-8 lg:ml-4 lg:mt-4 lg:px-3 0 lg:tracking-[-4px] lg:leading-none">
           contact
         </motion.h1>
       </motion.div>
 
       <motion.div
-        className="border-t border-white/10 flex-1 px-6 sm:px-8"
+        className="border-t border-white/10 flex-1 px-6 lg:px-8"
         variants={containerVariants}
       >
-        <div className="pt-8 sm:p-8">
+        <div className="pt-8 lg:p-8">
           <motion.div className="mb-6" variants={itemVariants}>
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-0">
-              <motion.p className="text-[28px] leading-[24px] font-semibold break-words sm:text-8xl sm:leading-none">
+            <div className="flex flex-col gap-2 lg:flex-row lg:items-baseline lg:gap-0">
+              <motion.p className="text-[28px] leading-[24px] font-semibold break-words lg:text-8xl lg:leading-none">
                 EMILIANO SANCHEZ
               </motion.p>
               <motion.p
-                className="text-xs font-medium text-gray-400 sm:text-base sm:pt-2 sm:pl-2 sm:text-white"
+                className="text-xs font-medium text-gray-400 lg:text-base lg:pt-2 lg:pl-2 lg:text-white"
                 variants={itemVariants}
               >
                 [emisanzmor]
@@ -78,7 +78,7 @@ const Contact = () => {
           </motion.div>
 
           <motion.p
-            className="text-xs text-gray-400 mb-8 tracking-wide sm:text-sm sm:mb-6"
+            className="text-xs text-gray-400 mb-8 tracking-wide lg:text-sm lg:mb-6"
             variants={itemVariants}
           >
             MOBILE · WEB DEVELOPER
@@ -91,7 +91,7 @@ const Contact = () => {
       </motion.div>
 
       <motion.div
-        className="px-6 py-6 border-t border-white/10 sm:hidden"
+        className="px-6 py-6 border-t border-white/10 lg:hidden"
         variants={itemVariants}
       >
         <motion.p

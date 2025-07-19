@@ -57,25 +57,25 @@ const Projects = () => {
   return (
     <motion.section
       id="projects"
-      className="min-h-screen flex flex-col pt-40 pb-[env(safe-area-inset-bottom)] sm:min-h-[70vh] sm:pt-30 sm:pb-0"
+      className="min-h-screen flex flex-col pt-40 pb-[env(safe-area-inset-bottom)] lg:min-h-[70vh] lg:pt-30 lg:pb-0"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
       <motion.div
-        className="relative px-6 mb-8 sm:h-[400px] sm:ml-4 sm:mt-4 sm:px-0"
+        className="relative px-6 mb-8 lg:h-[400px] lg:ml-4 lg:mt-4 lg:px-0"
         variants={titleVariants}
       >
-        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 sm:text-[290px] sm:tracking-[-4px] sm:z-0 sm:px-3 sm:mb-0 sm:leading-none ">
+        <motion.h1 className="text-[48px] leading-[40px] font-bold tracking-[-2px] text-[#e5e5e5] mb-4 lg:text-[290px] lg:tracking-[-4px] lg:z-0 lg:px-3 lg:mb-0 lg:leading-none ">
           projects
         </motion.h1>
       </motion.div>
 
       <motion.div
-        className="flex-1 px-6 sm:px-0"
+        className="flex-1 px-6 lg:px-0"
         variants={projectsListVariants}
       >
-        <div className="flex flex-col gap-4 sm:gap-0">
+        <div className="flex flex-col gap-4 lg:gap-0">
           {projectsData.map((project, index) => (
             <motion.div
               key={project.id}
