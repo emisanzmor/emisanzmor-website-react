@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import useLoadingNavigate from "../hooks/useLoadingNavigate";
-import Ticker from "./Ticker";
+import useLoadingNavigate from "../../hooks/useLoadingNavigate";
+import Ticker from "../layout/Ticker";
 
 const About = ({ setIsLoading }) => {
   const navigateWithLoading = useLoadingNavigate(setIsLoading);
@@ -28,22 +28,6 @@ const About = ({ setIsLoading }) => {
       transition: {
         duration: 0.6,
         ease: "easeOut",
-      },
-    },
-  };
-
-  const nameVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-        delay: 0.6,
       },
     },
   };

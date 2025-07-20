@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import SocialLinks from "./SocialLinks";
+import SocialLinks from "../shared/SocialLinks";
 
 const Contact = () => {
   const containerVariants = {

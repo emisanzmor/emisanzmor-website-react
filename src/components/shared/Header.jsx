@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import useLoadingNavigate from "../hooks/useLoadingNavigate";
+import useLoadingNavigate from "../../hooks/useLoadingNavigate";
 
 const Header = ({ setIsLoading }) => {
   const navigateWithLoading = useLoadingNavigate(setIsLoading);

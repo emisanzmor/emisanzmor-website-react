@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Header from "./components/Header";
-import About from "./components/About";
-import Footer from "./components/Footer";
-import LoadingScreen from "./components/LoadingScreen";
-import ProjectsPage from "./pages/ProjectsPage";
-import Contact from "./components/Contact";
+import Header from "./components/shared/Header";
+import About from "./components/pages/About";
+import Footer from "./components/shared/Footer";
+import LoadingScreen from "./components/layout/LoadingScreen";
+import ProjectsPage from "./components/pages/ProjectsPage";
+import Contact from "./components/pages/Contact";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);

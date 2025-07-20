@@ -1,5 +1,5 @@
 import { delay } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // Ajusta la ruta si está en otra carpeta
+import { useNavigate } from "react-router-dom";
 
 const useLoadingNavigate = (setIsLoading, delay = 300) => {
   const navigate = useNavigate();
