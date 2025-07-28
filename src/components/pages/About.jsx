@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import useLoadingNavigate from "../../hooks/useLoadingNavigate";
 import Ticker from "../layout/Ticker";
+import useDownloadCV from "../../hooks/useDownloadCV";
 
 const About = ({ setIsLoading }) => {
   const navigateWithLoading = useLoadingNavigate(setIsLoading);
+  const downloadCV = useDownloadCV();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -60,16 +62,26 @@ const About = ({ setIsLoading }) => {
           Outside of coding, I explore emerging tech and build side projects
           that challenge and inspire me to keep growing as a developer.
         </motion.p>
-
-        <motion.button
-          onClick={() => navigateWithLoading("/projects")}
-          className="text-sm no-underline visited:text-white !text-white hover:text-white font-medium transition-all duration-300 ease-in-out hover:scale-105 bg-transparent border-none cursor-pointer p-0 lg:mt-6"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          style={{ background: "none" }}
-        >
-          View my work →
-        </motion.button>
+        <motion.div className="flex flex-row gap-4 lg:mt-6">
+          <motion.button
+            onClick={() => navigateWithLoading("/projects")}
+            className="text-sm no-underline visited:text-white !text-white hover:text-white font-medium transition-all duration-300 ease-in-out hover:scale-105 bg-transparent border-none cursor-pointer p-0"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{ background: "none" }}
+          >
+            View my work →
+          </motion.button>
+          <motion.button
+            onClick={downloadCV}
+            className="text-sm font-medium text-white hover:text-gray-300 transition-all duration-300 ease-in-out hover:scale-105 bg-transparent border !border-white/10 hover:border-white/40 px-4 py-2 rounded-md cursor-pointer"
+            style={{ background: "none" }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Download CV
+          </motion.button>
+        </motion.div>
       </motion.div>
 
       <motion.div
