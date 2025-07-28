@@ -2,13 +2,14 @@ import React from "react";
 import placeholder from "../../assets/emisanzmor_placeholder.png";
 import ProjectItem from "./ProjectItem";
 import { motion } from "framer-motion";
+import P1_3ES from "../../assets/P1-3ES.png";
 
 const Projects = () => {
   const projectsData = [
     {
       id: 1,
       title: "P1-3ES",
-      image: placeholder,
+      image: P1_3ES,
     },
     { id: 2, title: "P2-UXD", image: placeholder },
     { id: 3, title: "P3-NV7", image: placeholder },
