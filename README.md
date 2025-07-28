@@ -41,7 +41,7 @@ This project is deployed via Netlify.
 
 * **PC**
 
-<img width="800" alt="Screenshot 2025-07-15 at 18 49 58" src="https://github.com/user-attachments/assets/fa3bfb4f-0568-47eb-972c-6cf3a4da5517" />
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/88b20970-e70c-4fe4-a11b-d2976c766d58" />
 
 
 
