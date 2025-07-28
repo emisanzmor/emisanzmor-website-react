@@ -32,11 +32,12 @@ This project is deployed via Netlify.
 ## Screenshots
 
 * **Mobile**
-  
-<img width="200" alt="IMG_0693" src="https://github.com/user-attachments/assets/5a9cba09-a2d9-4284-96ba-ed4a9df3b47e" />
-<img width="200" alt="IMG_0686" src="https://github.com/user-attachments/assets/c27c6d14-8ab1-42aa-81de-195683d5bc60" />
-<img width="200" alt="image" src="https://github.com/user-attachments/assets/78551331-cd63-45ba-9b20-d1a5c588ad12" />
-<img width="200" alt="IMG_0687" src="https://github.com/user-attachments/assets/23051109-5437-4447-be22-cf4b8ddf064e" />
+<img width="200" alt="IMG_0697-portrait 2" src="https://github.com/user-attachments/assets/60a6403e-57e9-4a6d-88d6-e3a62e750205" />
+<img width="200" alt="IMG_0693-portrait" src="https://github.com/user-attachments/assets/5063bb5d-5bee-408a-a4c5-c7e9d20930d3" />
+<img width="200" alt="IMG_0985" src="https://github.com/user-attachments/assets/e4c1f247-d0cd-4b20-b773-6065370d71a4" />
+<img width="200" alt="IMG_0986" src="https://github.com/user-attachments/assets/b5387d07-c988-4a28-b04a-95e9b4fb19cb" />
+
+
 
 * **PC**
 
