@@ -3,6 +3,7 @@ import placeholder from "../../assets/emisanzmor_placeholder.png";
 import ProjectItem from "./ProjectItem";
 import { motion } from "framer-motion";
 import P1_3ES from "../../assets/P1-3ES.png";
+import P2_UXD from "../../assets/P2-UXD.png";
 
 const Projects = () => {
   const projectsData = [
@@ -11,7 +12,7 @@ const Projects = () => {
       title: "P1-3ES",
       image: P1_3ES,
     },
-    { id: 2, title: "P2-UXD", image: placeholder },
+    { id: 2, title: "P2-UXD", image: P2_UXD },
     { id: 3, title: "P3-NV7", image: placeholder },
     { id: 4, title: "P4-KAI", image: placeholder },
     { id: 5, title: "P5-ZNT", image: placeholder },
